@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djxjbomqu1mir"]
+
+[ext_resource type="PackedScene" uid="uid://4vfhekdj741w" path="res://assets/pistola.glb" id="1_wfuos"]
+
+[node name="pistola" instance=ExtResource("1_wfuos")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

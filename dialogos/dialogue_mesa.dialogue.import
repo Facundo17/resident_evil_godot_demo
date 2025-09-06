@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://cgk2x2hrq4j8b"
+path="res://.godot/imported/dialogue_mesa.dialogue-6ed328f78747e7facbe1f8b9d435fc1c.tres"
+
+[deps]
+
+source_file="res://dialogos/dialogue_mesa.dialogue"
+dest_files=["res://.godot/imported/dialogue_mesa.dialogue-6ed328f78747e7facbe1f8b9d435fc1c.tres"]
+
+[params]
+
+defaults=true

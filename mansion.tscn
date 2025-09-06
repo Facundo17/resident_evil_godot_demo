@@ -1,0 +1,318 @@
+[gd_scene load_steps=20 format=3 uid="uid://csr2rd6st6ht8"]
+
+[ext_resource type="Script" uid="uid://5obp7bcyt81b" path="res://scripts/Player.gd" id="1_1igch"]
+[ext_resource type="PackedScene" uid="uid://ba0tbx7nskblx" path="res://jill.tscn" id="1_mgy1y"]
+[ext_resource type="Script" uid="uid://cc3ktnaek683b" path="res://scripts/Administrator.gd" id="3_bc6as"]
+[ext_resource type="AudioStream" uid="uid://bk43xqnse2p8n" path="res://sonidos/jill/footstep.wav" id="4_ccdu0"]
+[ext_resource type="PackedScene" uid="uid://b62lsdu28rh3o" path="res://tyrant.tscn" id="4_corv2"]
+[ext_resource type="Script" uid="uid://cjra481l5eb8n" path="res://scripts/Enemy.gd" id="4_yqexu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_igk5a"]
+radius = 0.0371061
+height = 0.561735
+
+[sub_resource type="Animation" id="Animation_1305c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("footStep:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4x48g"]
+resource_name = "foot_step"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("footStep:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pored"]
+_data = {
+&"RESET": SubResource("Animation_1305c"),
+&"foot_step": SubResource("Animation_4x48g")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g1p7i"]
+custom_solver_bias = 0.247
+radius = 0.15473
+height = 0.773021
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyddn"]
+size = Vector3(0.453936, 0.0729812, 0.815712)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7q8b1"]
+size = Vector3(1.97537, 0.268699, 0.0276055)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_d8cfs"]
+vertices = PackedVector3Array(-1.2028, 0.172449, -1.6028, -0.2028, 0.172449, -1.7028, -0.2028, 0.172449, -3.9028, -3.9028, 0.172449, -1.1028, -1.4028, 0.172449, -1.1028, -1.2028, 0.172449, -1.6028, -1.2028, 0.172449, -1.6028, -0.2028, 0.172449, -3.9028, -3.9028, 0.172449, -3.9028, -3.9028, 0.172449, -1.1028, 1.8972, 0.172449, -1.5028, 1.9972, 0.172449, -1.1028, 3.8972, 0.172449, -1.1028, 1.5972, 0.172449, -1.7028, 1.8972, 0.172449, -1.5028, 3.8972, 0.172449, -1.1028, 3.8972, 0.172449, -3.9028, -0.2028, 0.172449, -3.9028, -0.2028, 0.172449, -3.9028, -0.2028, 0.172449, -1.7028, 1.5972, 0.172449, -1.7028, -1.3028, 0.172449, -0.7028, -1.4028, 0.172449, -1.1028, -3.9028, 0.172449, -1.1028, -0.9028, 0.172449, -0.5028, -1.3028, 0.172449, -0.7028, -3.9028, 0.172449, -1.1028, -3.9028, 0.172449, 3.8972, -0.9028, 0.172449, 3.8972, 3.8972, 0.172449, -1.1028, 1.9972, 0.172449, -1.1028, 1.8972, 0.172449, -0.7028, 3.8972, 0.172449, -1.1028, 1.8972, 0.172449, -0.7028, 1.5972, 0.172449, -0.5028, 3.8972, 0.172449, 3.8972, -0.9028, 0.172449, 3.8972, 3.8972, 0.172449, 3.8972, 1.5972, 0.172449, -0.5028, -0.9028, 0.172449, -0.5028)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 5, 4), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(12, 11, 10), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 17), PackedInt32Array(20, 19, 18), PackedInt32Array(23, 22, 21), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37)]
+cell_size = 0.1
+cell_height = 0.1
+agent_max_climb = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kdgh7"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_momm0"]
+custom_solver_bias = 0.054
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbnnk"]
+size = Vector3(2.29513, 1.22782, 0.149029)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddjej"]
+
+[sub_resource type="Theme" id="Theme_ynm4j"]
+
+[node name="Mansion" type="Node3D"]
+script = ExtResource("3_bc6as")
+
+[node name="Player" type="RigidBody3D" parent="."]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+freeze_mode = 1
+script = ExtResource("1_1igch")
+
+[node name="jill" parent="Player" instance=ExtResource("1_mgy1y")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282415, 0.280172, 0)
+shape = SubResource("CapsuleShape3D_igk5a")
+
+[node name="footStep" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("4_ccdu0")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="footSteps" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_pored")
+}
+
+[node name="Enemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76845, 0, 1.27991)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("4_yqexu")
+speed_move = 5
+target = NodePath("../Player")
+
+[node name="tyrant" parent="Enemy" instance=ExtResource("4_corv2")]
+transform = Transform3D(-0.98536, 0, 0.170484, 0, 1, 0, -0.170484, 0, -0.98536, -0.000636011, 0, 0.0189841)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+transform = Transform3D(0.00481695, 0, 0.999988, 0, 1, 0, -0.999988, 0, 0.00481695, 0.0289318, 0.38583, -0.00853348)
+shape = SubResource("CapsuleShape3D_g1p7i")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
+debug_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Enemy"]
+transform = Transform3D(0.00481695, 0, 0.999988, 0, 1, 0, -0.999988, 0, 0.00481695, -0.000636011, 0.451918, 0.0189841)
+target_position = Vector3(2, 0, 0)
+collide_with_areas = true
+
+[node name="Area3D" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285239, -0.212474)
+shape = SubResource("BoxShape3D_gyddn")
+
+[node name="ReactionTime" type="Timer" parent="Enemy"]
+one_shot = true
+
+[node name="check_points" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="check_points"]
+transform = Transform3D(0.67703, 0, 0.735955, 0, 1, 0, -0.735955, 0, 0.67703, 1.17752, 0.127607, 0.960897)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="check_points/Area3D"]
+shape = SubResource("BoxShape3D_7q8b1")
+
+[node name="cameras" type="Node3D" parent="."]
+
+[node name="Cam1" type="Camera3D" parent="cameras"]
+transform = Transform3D(0.576432, -0.140491, 0.804977, 0, 0.985109, 0.171929, -0.817145, -0.0991055, 0.567849, 1.5181, 0.845173, 1.78101)
+current = true
+fov = 32.8
+
+[node name="Cam2" type="Camera3D" parent="cameras"]
+transform = Transform3D(0.755762, 0.112587, -0.645095, 6.0882e-09, 0.985109, 0.171929, 0.654846, -0.129937, 0.744508, 0.500332, 0.845173, 2.96211)
+fov = 32.8
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00860434, 0.999963, 0, -0.999963, -0.00860434, -0.667619, 2.65393, -0.159559)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_d8cfs")
+
+[node name="piso" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/piso"]
+transform = Transform3D(4.4028, 0, 0, 0, 4.4028, 0, 0, 0, 4.4028, 0, 0, 0)
+mesh = SubResource("PlaneMesh_kdgh7")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/piso"]
+shape = SubResource("WorldBoundaryShape3D_momm0")
+
+[node name="muro" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/muro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.297176, 0.588713, -1.12526)
+shape = SubResource("BoxShape3D_tbnnk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/muro"]
+transform = Transform3D(2.29951, 0, 0, 0, 1.23253, 0, 0, 0, 0.145888, 0.297176, 0.588713, -1.12526)
+mesh = SubResource("BoxMesh_ddjej")
+skeleton = NodePath("../../..")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ynm4j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 85
+dragger_visibility = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0.211765, 0.717647, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer/VSplitContainer/HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="map" type="Button" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MAP"
+
+[node name="file" type="Button" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "FILE"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="radio" type="Button" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "RADIO"
+
+[node name="exit" type="Button" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "EXIT"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Control/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0.211765, 0.717647, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="Menu/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -167.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/Control/MarginContainer2"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Control/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="body_entered" from="Enemy/Area3D" to="Enemy" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Enemy/Area3D" to="Enemy" method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Enemy/ReactionTime" to="Enemy" method="_on_reaction_time_timeout"]
+[connection signal="body_exited" from="check_points/Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,8 @@
+res://mansion_demo.tscn
+res://Materiales/custom_madera.tres
+res://scripts/Enemy.gd
+res://Materiales/line_shader.gdshader
+res://shaders/life_line.gdshader
+res://Materiales/shader_line.tres
+res://jill.tscn
+res://tyrant.tscn

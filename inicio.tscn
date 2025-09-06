@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://cc1hwb6a7jljp"]
+
+[ext_resource type="Texture2D" uid="uid://cohnbw7cav01" path="res://UI/8_c95S_DTaqTbw_EGl2wxg.jpg" id="1_2vlha"]
+[ext_resource type="Script" uid="uid://dbph38q5y655i" path="res://inicio.gd" id="2_n6a48"]
+[ext_resource type="AudioStream" uid="uid://lflae4dpu1am" path="res://sonidos/Resident Evil 1 Voice Title.mp3" id="3_d0jod"]
+[ext_resource type="PackedScene" uid="uid://c35bn3ltmj5w5" path="res://scene_transition.tscn" id="4_mdthm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7si7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx7sp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wra0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lap6e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v85x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04kmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py7nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nd5i4"]
+
+[node name="Inicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2vlha")
+expand_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -877.0
+offset_top = -324.0
+offset_right = 877.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 225
+text = " RESIDENT EVIL"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="play" type="Button" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../load")
+theme_override_colors/font_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_pressed_color = Color(0.521569, 0.521569, 0.521569, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f7si7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lx7sp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wra0w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lap6e")
+text = "PLAY GAME"
+script = ExtResource("2_n6a48")
+
+[node name="load" type="Button" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../play")
+theme_override_colors/font_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_pressed_color = Color(0.521569, 0.521569, 0.521569, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1v85x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_04kmq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_py7nr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nd5i4")
+text = "LOAD GAME"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d0jod")
+volume_db = -10.031
+mix_target = 1
+
+[node name="scene_transition" parent="." instance=ExtResource("4_mdthm")]
+
+[connection signal="focus_entered" from="VBoxContainer2/VBoxContainer/play" to="VBoxContainer2/VBoxContainer/play" method="_on_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer2/VBoxContainer/play" to="VBoxContainer2/VBoxContainer/play" method="_on_focus_exited"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/play" to="VBoxContainer2/VBoxContainer/play" method="_on_pressed"]

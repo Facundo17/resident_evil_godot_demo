@@ -1,0 +1,154 @@
+[gd_scene load_steps=17 format=3 uid="uid://b62lsdu28rh3o"]
+
+[ext_resource type="PackedScene" uid="uid://jpxw27kymfl5" path="res://enemy/tyrant.fbx" id="1_qyf1f"]
+[ext_resource type="Script" uid="uid://djiqads0rrrn4" path="res://scripts/FootStepsSound.gd" id="2_o72n7"]
+[ext_resource type="Animation" uid="uid://t4dareegdo6a" path="res://tyrant/animations/tyrantAttack.res" id="2_shn4p"]
+[ext_resource type="Animation" uid="uid://bf65ng4slhkle" path="res://tyrant/animations/tyrantDeath.res" id="3_g5tnj"]
+[ext_resource type="Animation" uid="uid://c3ggnplyiay4v" path="res://tyrant/animations/tyrantIdle.res" id="4_w1olu"]
+[ext_resource type="Animation" uid="uid://k747qy2j8xpq" path="res://tyrant/animations/tyrantWalking.res" id="5_fbh04"]
+[ext_resource type="AudioStream" uid="uid://bk43xqnse2p8n" path="res://sonidos/jill/footstep.wav" id="7_stx5b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owt6p"]
+size = Vector3(0.0597709, 0.133324, 0.0346022)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7462"]
+_data = {
+&"tyrantAttack": ExtResource("2_shn4p"),
+&"tyrantDeath": ExtResource("3_g5tnj"),
+&"tyrantIdle": ExtResource("4_w1olu"),
+&"tyrantWalking": ExtResource("5_fbh04")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fj44e"]
+animation = &"tyrant_library/tyrantAttack"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_r8p8m"]
+xfade_time = 0.5
+input_0/name = "walking"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "attack"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4nb0f"]
+animation = &"tyrant_library/tyrantIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g6h8b"]
+animation = &"tyrant_library/tyrantWalking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3v8ww"]
+animation = &"tyrant_library/tyrantIdle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ct1b8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4nb0f")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_g6h8b")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_3v8ww")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8vmuf"]
+graph_offset = Vector2(-290.264, 36.3971)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_fj44e")
+nodes/Animation/position = Vector2(-260, 320)
+nodes/Transition/node = SubResource("AnimationNodeTransition_r8p8m")
+nodes/Transition/position = Vector2(100, 140)
+nodes/output/position = Vector2(340, 120)
+nodes/walk_cycle/node = SubResource("AnimationNodeBlendSpace1D_ct1b8")
+nodes/walk_cycle/position = Vector2(-220, 120)
+node_connections = [&"Transition", 0, &"walk_cycle", &"Transition", 1, &"Animation", &"output", 0, &"Transition"]
+
+[node name="tyrant" instance=ExtResource("1_qyf1f")]
+
+[node name="Skeleton3D" parent="RootNode/Armature" index="0"]
+bones/0/position = Vector3(0.00197161, 0.470103, -0.00511966)
+bones/0/rotation = Quaternion(0.0132925, 0.929512, -0.0378195, 0.366607)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.0361277, 0.0395466, 0.00853778, 0.998528)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.099414, 0.0808058, 0.0158674, 0.991633)
+bones/3/rotation = Quaternion(-0.099414, 0.0808059, 0.0158674, 0.991633)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0171064, -0.0110141, -0.00185452, 0.999791)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.0461483, 0.176611, 0.00903779, 0.983157)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(-2.85218e-09, -7.54371e-08, 1.24683e-18, 1)
+bones/8/rotation = Quaternion(0.532335, -0.45426, 0.536186, 0.471988)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.044071, 0.847299, 0.519989, 0.0987625)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0102445, 0.0599666, -0.407675, 0.911098)
+bones/10/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.490168, -0.481088, 0.592836, -0.420518)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.186646, 0.848798, 0.489504, -0.0713522)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.0344533, 0.0198411, 0.36392, 0.930581)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(6.42613e-08, -5.64614e-07, 1.67638e-08, 1)
+bones/18/rotation = Quaternion(0.0792459, -0.206081, 0.968418, 0.115834)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.301448, 0.122753, 0.0542423, 0.943991)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.0637526, 0.862015, -0.502229, -0.0251127)
+bones/20/scale = Vector3(1, 0.999999, 1)
+bones/21/rotation = Quaternion(0.32334, -0.00111392, -0.0158875, 0.946149)
+bones/21/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.126632, 0.0120347, 0.982929, -0.132928)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.290982, 0.0698124, 0.0145622, 0.954067)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.1372, 0.762543, -0.631903, -0.0200938)
+bones/27/rotation = Quaternion(0.317453, 0.0226548, -0.00894034, 0.947961)
+
+[node name="LeftFoot" type="BoneAttachment3D" parent="RootNode/Armature/Skeleton3D" index="1" node_paths=PackedStringArray("footSteps")]
+transform = Transform3D(-0.606222, -0.795275, -0.00555882, -0.00656124, -0.00198695, 0.999976, -0.795268, 0.606244, -0.00401261, -0.00557552, 0.00199654, 0.199807)
+bone_name = "mixamorig_LeftToeBase"
+bone_idx = 21
+script = ExtResource("2_o72n7")
+footSteps = NodePath("../../../../footSteps")
+
+[node name="FootDetection" type="Area3D" parent="RootNode/Armature/Skeleton3D/LeftFoot" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Armature/Skeleton3D/LeftFoot/FootDetection" index="0"]
+transform = Transform3D(0.999929, -0.00119665, -0.0119108, 0.00131422, 0.999951, 0.00989753, 0.0118985, -0.00991208, 0.99988, -0.00316626, -0.0545414, 0.00931325)
+shape = SubResource("BoxShape3D_owt6p")
+
+[node name="RightFoot" type="BoneAttachment3D" parent="RootNode/Armature/Skeleton3D" index="2" node_paths=PackedStringArray("footSteps")]
+transform = Transform3D(-0.38514, -0.92273, -0.0153876, -0.0160456, -0.00997543, 0.999821, -0.922719, 0.385318, -0.0109636, -0.102685, 0.00193462, -0.131292)
+bone_name = "mixamorig_RightToeBase"
+bone_idx = 27
+script = ExtResource("2_o72n7")
+footSteps = NodePath("../../../../footSteps")
+
+[node name="FootDetection" type="Area3D" parent="RootNode/Armature/Skeleton3D/RightFoot" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Armature/Skeleton3D/RightFoot/FootDetection" index="0"]
+transform = Transform3D(0.999929, 0.00600797, -0.0102413, -0.00605386, 0.999971, -0.00449594, 0.0102138, 0.0045575, 0.999938, 0.00904974, -0.0627981, 0.00990678)
+shape = SubResource("BoxShape3D_owt6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"tyrant_library": SubResource("AnimationLibrary_s7462")
+}
+autoplay = "tyrant_library/tyrantIdle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_8vmuf")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Transition/current_state = "walking"
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = 0
+parameters/walk_cycle/blend_position = 0.0
+
+[node name="footSteps" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("7_stx5b")
+volume_db = -5.0
+pitch_scale = 0.5
+
+[connection signal="body_entered" from="RootNode/Armature/Skeleton3D/LeftFoot/FootDetection" to="RootNode/Armature/Skeleton3D/LeftFoot" method="_on_foot_detection_body_entered"]
+[connection signal="body_entered" from="RootNode/Armature/Skeleton3D/RightFoot/FootDetection" to="RootNode/Armature/Skeleton3D/RightFoot" method="_on_foot_detection_body_entered"]

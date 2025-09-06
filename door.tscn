@@ -1,0 +1,203 @@
+[gd_scene load_steps=10 format=3 uid="uid://tkmhfxcfn44t"]
+
+[ext_resource type="ArrayMesh" uid="uid://btkbg1m43u0ku" path="res://door/marco.res" id="1_lphqu"]
+[ext_resource type="ArrayMesh" uid="uid://bla11cqjwfm3r" path="res://door/door.res" id="2_mi36w"]
+[ext_resource type="ArrayMesh" uid="uid://dxwrppot6o2ts" path="res://door/picaporte.res" id="3_sdoh1"]
+[ext_resource type="AudioStream" uid="uid://dv2cedds17voh" path="res://sonidos/DoorOpen.mp3" id="4_ga13m"]
+[ext_resource type="AudioStream" uid="uid://ta7mpvo45iel" path="res://sonidos/DoorClose.mp3" id="5_ry87a"]
+
+[sub_resource type="Environment" id="Environment_bjqjj"]
+background_mode = 1
+
+[sub_resource type="Animation" id="Animation_4g8n3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.211487, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.453796, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("doorOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("doorClose:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_it7ma"]
+resource_name = "door_open"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 4, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.238246, 0), Vector3(0, -1.49507, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.211487, -0.25, 0, 0.25, 0, 0.211487, -0.25, 0, 0.25, 0, 0.211487, -0.25, 0, 0.25, 0, 0.211487, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.453796, -0.25, 0, 0.25, 0, 0.342699, -0.25, 0, 0.25, 0, 0.342699, -0.25, 0, 0.25, 0, -0.141663, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 4.5, 8)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("doorOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1.07177),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("doorClose:playing")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1.02838),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqbhj"]
+_data = {
+&"RESET": SubResource("Animation_4g8n3"),
+&"door_open": SubResource("Animation_it7ma")
+}
+
+[node name="root" type="Node3D"]
+
+[node name="Marco" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_lphqu")
+
+[node name="pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0937653, 0, 0)
+
+[node name="Picaporte" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0937653, 0, 0.0870205)
+mesh = ExtResource("3_sdoh1")
+skeleton = NodePath("../..")
+
+[node name="Door" type="MeshInstance3D" parent="pivot"]
+transform = Transform3D(1.05046, 0, 0, 0, 1.12744, 0, 0, 0, 1, -0.0754865, 0.223352, -0.00280762)
+mesh = ExtResource("2_mi36w")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211487, 0.453796)
+environment = SubResource("Environment_bjqjj")
+current = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.752909, 0.658125, 0, -0.658125, 0.752909, 0, 1.62042, 2.60381)
+light_color = Color(0.996078, 1, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqbhj")
+}
+autoplay = "door_open"
+
+[node name="doorOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ga13m")
+mix_target = 1
+
+[node name="doorClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ry87a")
+volume_db = -4.643
+mix_target = 1

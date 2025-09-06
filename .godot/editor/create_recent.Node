@@ -1,0 +1,15 @@
+AnimationPlayer
+ColorRect
+CanvasLayer
+AudioStreamPlayer
+AudioStreamPlayer3D
+AudioStreamPlayer2D
+RichTextLabel
+VBoxContainer
+Button
+TextureRect
+PanelContainer
+Camera3D
+BoneAttachment3D
+CollisionShape3D
+Node3D
